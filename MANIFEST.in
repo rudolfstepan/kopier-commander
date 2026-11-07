@@ -1,0 +1,4 @@
+include LICENSE README.md CHANGELOG.md CONTRIBUTING.md
+include run.py run_tests.py Start-KopierCommander.cmd
+recursive-include tests *.py
+recursive-include docs *.md
