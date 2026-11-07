@@ -23,6 +23,7 @@ in the CI workflow, but has not yet been verified on a physical Linux desktop.
 - Copy in a background thread, with per-file progress and cancellation.
 - Verify newly copied data with SHA-256 by default.
 - Publish completed copies from temporary files; skip existing targets by default.
+- Use a matching two-pane copy icon for the application and Windows launch shortcut.
 
 ## Run from source
 
@@ -49,6 +50,29 @@ python run.py --help
 Supplying `--source` or `--target` starts a new, empty task instead of restoring
 the last task. `--task` loads a saved task and cannot be combined with these path
 options. Paths can always be changed through the GUI.
+
+### Windows shortcut and app icon
+
+![Kopier Commander icon](src/kopier_commander/assets/kopier-commander-48.png)
+
+The blue icon shows two file panels and a yellow copy arrow. It appears in the
+application's title bar and Windows taskbar. To create a launch shortcut with
+the same icon, open PowerShell in the project folder and run:
+
+```powershell
+.\tools\Create-Shortcut.ps1
+```
+
+Double-click the resulting `Start-KopierCommander.lnk` to start the application.
+Explorer may hide the `.lnk` extension. The shortcut starts the existing CMD
+launcher, sets the project folder as the working directory and uses the supplied
+ICO file. Python with Tcl/Tk must still be installed.
+
+You can copy the shortcut to your desktop. Keep the project folder and its icon
+assets together. After moving or renaming the project folder, rerun the script
+and replace any desktop copy of the shortcut. Generated shortcuts are excluded
+from Git because they contain absolute local paths. A fresh clone needs its own
+shortcut; the supplied icons are ready to use.
 
 ### Install as a Python package
 
@@ -183,6 +207,17 @@ the repository is published.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), [the changelog](CHANGELOG.md) and the
 [German quick guide](docs/bedienung.md).
+
+The icon assets are included in Python packages as well as source checkouts.
+To redraw all icon sizes with Windows PowerShell and .NET drawing tools
+(no extra packages required), run from the project folder:
+
+```powershell
+.\tools\Build-Icons.ps1
+```
+
+See [the contributor guide](CONTRIBUTING.md#icon-assets) for asset formats and
+packaging details.
 
 ## License
 

@@ -299,6 +299,12 @@ class Commander:
         self.active_key = None
         self.style()
         root.title("Kopier Commander")
+        assets = Path(__file__).resolve().parent / "assets"
+        self.app_icons = [tk.PhotoImage(master=root, file=str(assets / f"kopier-commander-{size}.png"))
+                          for size in (16, 32, 48, 256)]
+        root.iconphoto(True, *self.app_icons)
+        if os.name == "nt":
+            root.iconbitmap(default=str(assets / "kopier-commander.ico"))
         root.geometry("1500x900")
         root.minsize(1000, 760)
         root.columnconfigure(0, weight=1)

@@ -3,6 +3,31 @@
 Start im Projektordner: `python run.py` oder unter Windows
 `Start-KopierCommander.cmd` doppelklicken.
 
+## Startsymbol unter Windows
+
+Das App-Symbol zeigt zwei blaue Dateifenster und einen gelben Kopierpfeil.
+Es erscheint im Programmfenster und in der Windows-Taskleiste.
+Für eine Startverknüpfung mit demselben Symbol PowerShell im Projektordner
+öffnen und einmal ausführen:
+
+```powershell
+.\tools\Create-Shortcut.ps1
+```
+
+Danach `Start-KopierCommander.lnk` doppelklicken. Explorer blendet die Endung
+`.lnk` eventuell aus. Die Verknüpfung startet die vorhandene CMD-Datei im
+Projektordner. Python mit Tcl/Tk muss weiterhin installiert und über `PATH`
+erreichbar sein.
+
+Die Verknüpfung kann auf den Desktop kopiert werden. Der Projektordner samt
+`src` und den Symbolen bleibt erhalten. Nach einem Verschieben oder Umbenennen
+des Projektordners das Skript erneut ausführen und die Desktop-Kopie ersetzen.
+Die Verknüpfung enthält lokale absolute Pfade und wird deshalb nicht ins Git
+übernommen. Nach einem neuen Klonen wird sie mit dem obigen Befehl erzeugt;
+die Symboldateien sind bereits enthalten.
+
+## Dateien vergleichen und kopieren
+
 1. **Alt+S**: Quellpfad eingeben, Enter.
 2. **Alt+Z**: Zielpfad eingeben, Enter.
 3. **F3**: Quelle und Ziel einschließlich Unterordnern vergleichen.

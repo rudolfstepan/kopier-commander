@@ -27,3 +27,6 @@ kopier-commander = "kopier_commander.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+kopier_commander = ["assets/*.png", "assets/*.ico"]

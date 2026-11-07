@@ -34,6 +34,9 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     window = None
     try:
+        if sys.platform == "win32":
+            import ctypes
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("KopierCommander.App")
         window = tk.Tk()
         Commander(window, source=args.source, target=args.target,
                   task=args.task.resolve() if args.task is not None else None)
